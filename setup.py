@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='lith',
-    version='0.1.4-A',
+    version='0.1.4rc1',
     author='UNREAL', # 原名Svila
     author_email='3775359187@qq.com',
     description='A lightweight programming language based on Python',

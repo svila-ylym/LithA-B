@@ -4,8 +4,6 @@
 # Lith目前还不完善
 #######################################
 
-from strings_with_arrows import *
-
 import string
 import os
 import math
@@ -51,8 +49,11 @@ def string_with_arrows(text, pos_start, pos_end):
 
 DIGITS = '0123456789'
 LETTERS = string.ascii_letters
-LETTERS_DIGITS = LETTERS + DIGITS
-VERSION = 'L0.1.1'
+CHINESE_LETTERS = ''.join(chr(i) for i in range(0x4E00, 0x9FFF + 1))
+RUSSIAN_LETTERS = ''.join(chr(i) for i in range(0x0400, 0x04FF + 1))
+CHINESE_TRADITIONAL = ''.join(chr(i) for i in range(0xF900, 0xFAFF + 1))
+LETTERS_DIGITS = LETTERS + DIGITS + CHINESE_LETTERS + RUSSIAN_LETTERS + CHINESE_TRADITIONAL
+VERSION = 'L0.1.4rc1'
 AUTHOR = 'UNREAL'
 LNAME = 'Lith'
 
@@ -1769,7 +1770,7 @@ class BuiltInFunction(BaseFunction):
   
     def execute_help(self, exec_ctx):
         commands = [
-            "PRINT(value) - 打印值",
+            "msgbox(value) - 打印值",
             "PRINT_RET(value) - 打印值并返回",
             "INPUT() - 从用户获取输入",
             "INPUT_INT() - 从用户获取整数输入",
@@ -1787,6 +1788,12 @@ class BuiltInFunction(BaseFunction):
         help_text = "\n".join(commands)
         return RTResult().success(String(help_text))
     execute_help.arg_names = []
+
+    def execute_info(self, exec_ctx):
+        version_info = f"{LNAME} {VERSION} - 作者: {AUTHOR}"
+        print(version_info)
+        return RTResult().success(String(version_info))
+    execute_info.arg_names = []
 
   def no_visit_method(self, node, context):
     raise Exception(f'No execute_{self.name} method defined')
@@ -2514,6 +2521,7 @@ global_symbol_table.set("EXTEND", BuiltInFunction.extend)
 global_symbol_table.set("LEN", BuiltInFunction.len)
 global_symbol_table.set("RUN", BuiltInFunction.run)
 global_symbol_table.set("HELP", BuiltInFunction("help"))
+global_symbol_table.set("INFO", BuiltInFunction("info"))
 
 print("欢迎使用Lith")
 

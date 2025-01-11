@@ -3,11 +3,15 @@
 ## 项目简介
 锂语言（Lith）是一种基于Python进行扩展的编程语言（库），旨在提供更为精炼和高效的编程体验。目前，锂语言仍处于开发阶段，部分功能尚不完善，但已具备基本的语法结构和运行时环境。
 
-*tips*:本语言部分技术来自YouTube@davidcallanan。
+*tips*:本语言部分技术来自YouTube@davidcallanan。语言大多数命令均为大写。
 
 **许可证**：本项目遵循在`29 June 2007`发布的`Version 3`版本的`GNU GENERAL PUBLIC LICENSE`
 
 # Lith 语言更新日志
+
+#### L0.1.4rc1(预发布)
+- 修复了一些已知问题。
+- 增加了一些帮助性命令。
 
 #### L0.1.4-Beta(测试版本)
 - 修复了一些已知问题。
@@ -90,7 +94,7 @@ VAR result = add(3, 4)
 PRINT(result)
 ```
 
-### 新特性 (L0.1.4-A版本)
+### 新特性
 
 - **元素存在性检查**：在`ChemicalFormulaChecker`类中新增了一个方法`element_exists`，该方法用于检查指定元素是否在任何已添加的化学方程式中出现，并返回布尔值。
 示例代码（L0.1.4-A第一轮测试）：

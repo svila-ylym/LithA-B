@@ -1,0 +1,10 @@
+README.md
+setup.py
+lith/__init__.py
+lith/basic.py
+lith/strings_with_arrows.py
+lith.egg-info/PKG-INFO
+lith.egg-info/SOURCES.txt
+lith.egg-info/dependency_links.txt
+lith.egg-info/top_level.txt
+test/test_basic.py
